@@ -275,6 +275,8 @@ table {
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 .top--navbar form {
   display: flex;
@@ -283,10 +285,10 @@ table {
 
 .top--navbar form input {
   border-radius: 15px;
-  background-color: var(--surface-container);
   border: none;
   padding: 10px 20px;
-  width: 300px;
+  width: 500px;
+  background-color: var(--surface-container);
 }
 .top--navbar form {
   margin-left: 50px;
@@ -298,8 +300,9 @@ table {
   position: absolute;
   border: none;
   background-color: var(--surface-container);
-  top: 0.5em;
+  top: 0.6em;
   left: 1em;
+  font-size: 0.5em;
 }
 
 form > input:placeholder {
@@ -308,10 +311,41 @@ form > input:placeholder {
 
 form > input::placeholder {
   text-align: right;
+  font-size: 0.6rem;
 }
 
 .action--bar {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.mobile-tabs {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--on-primary);
+  width: 100%;
+  height: 50px;
+  color: var(--on-surface-variant);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 721px) {
+  .mobile-tabs {
+    display: none;
+  }
+}
+@media (max-width: 960px) {
+  .top--navbar form input {
+    width: 10rem;
+  }
+}
+@media (max-width: 720px) {
+  .sidebar--container {
+    display: none;
+  }
 }
