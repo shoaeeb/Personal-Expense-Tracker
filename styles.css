@@ -330,8 +330,8 @@ form > input::placeholder {
   display: flex;
   align-items: center;
   margin-bottom: 0;
-  display: flex;
   justify-content: space-evenly;
+  left: 0;
 }
 
 @media (min-width: 721px) {
