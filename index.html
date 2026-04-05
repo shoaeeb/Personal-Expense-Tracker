@@ -12,41 +12,35 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <main class="main--container">
-      <div class="container">
-        <div class="sidebar--container">
+    <main class="app">
+      <div class="app__layout">
+        <div class="sidebar">
           <header>
             <h1>The Ledger</h1>
             <p>Sovereign Architect</p>
 
-            <nav class="nav--links">
-              <div class="selected">
+            <nav class="sidebar__nav">
+              <div class="sidebar__nav-item--active">
                 <span
-                  class="material-symbols-outlined icon"
+                  class="material-symbols-outlined nav-icon"
                   data-icon="dashboard"
                   >dashboard</span
                 >
-
-                <a class="selected-a-tag" href="/">Dashboard</a>
+                <a class="sidebar__nav-link--active" href="/">Dashboard</a>
               </div>
               <div>
                 <span
-                  class="material-symbols-outlined icon"
+                  class="material-symbols-outlined nav-icon"
                   data-icon="receipt_long"
                   >receipt_long</span
                 >
-
                 <a href="/transactions">Transactions</a>
               </div>
               <div>
                 <span
-                  class="material-symbols-outlined icon"
+                  class="material-symbols-outlined nav-icon"
                   data-icon="account_balance_wallet"
                   >account_balance_wallet</span
                 >
@@ -54,34 +48,33 @@
               </div>
               <div>
                 <span
-                  class="material-symbols-outlined icon"
+                  class="material-symbols-outlined nav-icon"
                   data-icon="bar_chart"
                   >bar_chart</span
                 >
-
-                <a href="/Reports">Reports</a>
+                <a href="/reports">Reports</a>
               </div>
             </nav>
-            <button class="btn--new-transaction">
-              <span class="material-symbols-outlined icon" data-icon="add"
+            <button class="sidebar__add-btn">
+              <span class="material-symbols-outlined nav-icon" data-icon="add"
                 >add</span
               >
               New Transaction
             </button>
           </header>
         </div>
-        <div class="homepage--container">
+        <div class="main-content">
           <!-- Top navbar -->
-          <div class="top--navbar">
+          <div class="topbar">
             <form>
               <input placeholder="Search Architecture" type="text" />
-              <button class="search-button">
+              <button class="topbar__search-btn">
                 <span class="material-symbols-outlined" data-icon="search"
                   >search</span
                 >
               </button>
             </form>
-            <div class="action--bar">
+            <div class="topbar__actions">
               <span class="material-symbols-outlined" data-icon="notifications"
                 >notifications</span
               >
@@ -89,6 +82,97 @@
                 >settings</span
               >
             </div>
+          </div>
+          <div class="dashboard">
+            <div class="dashboard__cards">
+              <div class="card card--networth">
+                <div class="card__header">
+                  <h1>Total Networth</h1>
+                  <!-- fake value for now -->
+                  <h2>$142,850.48</h2>
+                </div>
+                <div class="card__footer">
+                  <div>
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="trending_up"
+                      >trending_up</span
+                    >
+                    <p>12.5%</p>
+                  </div>
+                  <p>vs last month</p>
+                </div>
+              </div>
+              <div class="card--income-expenses">
+                <div class=" card card__income">
+                  <div>
+                    <h1 class="income__text-header">Total income</h1>
+                    <span
+                      class="material-symbols-outlined arrow__downward"
+                      data-icon="arrow_downward"
+                      >arrow_downward</span
+                    >
+                  </div>
+                  <h1 class="income__text">$12,500</h1>
+                  </div>
+                  <div class="card card__expense">
+                    <div>
+                    <h1 class="income__text-header">Total Expense</h1>
+                    <span
+                      class="material-symbols-outlined arrow__upward"
+                      data-icon="arrow_upward"
+                      >arrow_downward</span
+                    >
+                  </div>
+                  <h1 class="expense__text">$4,500</h1>
+                    
+                  </>
+                  </div>
+                </div>
+              </div>
+              <!-- form and table -->
+               <div class="ledger-panel">
+                <div>form</div>
+                <div>table</div>
+               </div>
+            </div>
+           
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div>
+            <a href="/">
+              <span class="material-symbols-outlined" data-icon="dashboard"
+                >dashboard</span
+              ></a
+            >
+            <p>Dashboard</p>
+          </div>
+          <div>
+            <a href="/transactions">
+              <span class="material-symbols-outlined" data-icon="receipt_long"
+                >receipt_long</span
+              >
+            </a>
+            <p>Ledger</p>
+          </div>
+          <div>
+            <a href="/budget">
+              <span
+                class="material-symbols-outlined"
+                data-icon="account_balance_wallet"
+                >account_balance_wallet</span
+              >
+            </a>
+            <p>Budget</p>
+          </div>
+          <div>
+            <a href="/reports">
+              <span class="material-symbols-outlined" data-icon="bar_chart"
+                >bar_chart</span
+              >
+            </a>
+            <p>Reports</p>
           </div>
         </div>
       </div>
