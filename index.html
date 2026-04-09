@@ -136,19 +136,19 @@
             <!-- form and table -->
             <div class="ledger-panel">
                 <div class="ledger__form">
-                  <form>
+                  <form id="ledger_form">
                     <header>
                       <h1 class="form__heading">Record Narative</h1>
                     </header>
                    
                     <div class="form__group">
                       <label for="merchant">Merchant/Source</label>
-                      <input id="merchant" type="text" placeholder="e.g Apple Store"/>
+                      <input id="merchant" name="merchant" type="text" placeholder="e.g Apple Store"/>
                     </div>
                     <div class="form__row">
                       <div class="form__group">
                         <label for="amount">AMOUNT</label>
-                        <input type="text" id="amount" placeholder="0.00"/>
+                        <input type="text" id="amount" name="amount" placeholder="0.00"/>
                       </div>
                       <div class="form__group">
                         <label for="type">TYPE</label>
@@ -169,6 +169,7 @@
                         <option value="salary">Salary</option>
                         <option value="investment">Investment</option>
                         <option value="technology">Technology</option>
+                        <option value="Rent and Utilities">Rent and Utilities</option>
                       </select>
                     </div>
                    <div class="btn__container">
@@ -181,12 +182,12 @@
                     <h1 class="ledgertable__heading">Recent Transactions</h1>
                     <div class="filter">
                       <h1 class="filter__text">Filter:</h1>
-                      <button type="button" class="filter__option selected__tab">All</button>
-                      <button type="button" class="filter__option "> food</button>
-                      <button type="button" class="filter__option ">rent</button>
-                      <button type="button" class="filter__option ">salary</button>
-                      <button type="button" class="filter__option ">investment</button>
-                      <button type="button" class="filter__option ">technology</button>
+                      <button type="button" data-filterValue="all" class="filter__option selected__tab">All</button>
+                      <button type="button" data-filterValue="food" class="filter__option "> food</button>
+                      <button type="button" data-filterValue="rent" class="filter__option ">rent</button>
+                      <button type="button" data-filterValue="salary" class="filter__option ">salary</button>
+                      <button type="button" data-filterValue="investment" class="filter__option ">investment</button>
+                      <button type="button" data-filterValue="technology" class="filter__option ">technology</button>
                     </div>
                   </div>
                   <table class="table__main">
@@ -198,7 +199,7 @@
                         <th>AMOUNT</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                       <tr>
                         <td>Oct 24,2023</td>
                         <td class="source">Whole Food Market</td>
@@ -229,7 +230,8 @@
                         <td class="category"><span>Technology</span></td>
                         <td class="expense">-$32</td>
                       </tr>
-                    </tbody>
+                    </tbody> -->
+                  
                   </table>
                  
                </div>
@@ -275,5 +277,8 @@
         </div>
       </div>
     </main>
+
+
+    <script src="./script.js" defer></script>
   </body>
 </html>
