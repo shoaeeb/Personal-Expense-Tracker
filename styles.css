@@ -129,12 +129,12 @@ table {
 
 :root {
   /*tertiary colors*/
-  --on-tertiary: "#ffffff";
-  --secondary: "#0a6c44";
-  --surface: "#f9f9ff";
-  --primary-fixed-dim: "#adc7f7";
-  --outline: "#74777f";
-  --on-tertiary-fixed-variant: "#920212";
+  --on-tertiary: #ffffff;
+  --secondary: #0a6c44;
+  --surface: #f9f9ff;
+  --primary-fixed-dim: #adc7f7;
+  --outline: #74777f;
+  --on-tertiary-fixed-variant: #920212;
   /* Primary Colors */
   --primary: #002045;
   --on-primary: #ffffff;
@@ -350,7 +350,7 @@ form > input::placeholder {
   align-items: center;
 }
 
-.dashboard {
+.dashboard,.content {
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -691,4 +691,50 @@ form > input::placeholder {
     padding: 0 15px;
     box-sizing: border-box;
   }
+}
+
+
+
+/* styles for transactions page */
+
+.sub-text { 
+  color:var(--primary-container);
+}
+
+.content {
+  padding-left:2px;
+  padding-right:2px;
+}
+
+.heading--text  {
+  color:var(--primary-container);
+  font-size:2rem;
+}
+
+.transaction--header_text { 
+  display: flex;
+  flex-direction: column;
+  gap:5
+}
+
+.transaction--header { 
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.export--btn { 
+  border:none;
+  padding:15px 20px;
+  background-color: var(--on-primary-fixed-variant);
+  color:white;
+  border-radius:35px;
+  display: flex;
+  justify-content: center;
+  align-items:center
 }
