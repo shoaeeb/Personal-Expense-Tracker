@@ -649,6 +649,113 @@ form > input::placeholder {
 
 /* ledger panel */
 /* end of ledger-panel */
+
+
+
+/* styles for transactions page */
+
+.sub-text { 
+  color:var(--primary-container);
+}
+
+.content {
+  padding-left:2px;
+  padding-right:2px;
+}
+
+.heading--text  {
+  color:var(--primary-container);
+  font-size:2rem;
+}
+
+.transaction--header_text { 
+  display: flex;
+  flex-direction: column;
+  gap:5
+}
+
+.transaction--header,.transaction--filter { 
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.export--btn { 
+  border:none;
+  padding:15px 20px;
+  background-color: var(--on-primary-fixed-variant);
+  color:white;
+  border-radius:35px;
+  display: flex;
+  justify-content: center;
+  align-items:center
+}
+
+.date-from , .date-to{
+  display: flex;
+  flex-direction: row;
+  gap:5px;
+  align-items: center;
+}
+
+.transaction--filter {
+   display: flex;
+   flex-direction: row;
+   gap: 12px;
+   align-items: center;
+   justify-content: flex-start;
+}
+
+
+.date-from > input , .date-to input , #category-filter , #category-filter option {
+  padding:10px 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding:16px 20px;
+  margin-top:10px;
+}
+
+.pagination__info { 
+  font-size:0.9rem;
+  color:var(--on-surface-variant);
+}
+.pagination__controls {
+  display: flex;
+  gap:6px;
+  align-items: center;
+}
+
+.pagination__btn { 
+  border:none;
+  background:none;
+  padding:8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size:0.9rem;
+  color:var(--on-surface)
+}
+
+.pagination__btn--active { 
+  background-color: var(--on-primary-fixed-variant);
+  color:white
+}
+
+.pagination__ellipsis { 
+  padding:0 4px;
+  color:var(--on-surface-variant)
+}
+
+
+
 @media (min-width: 883px) {
   .bottom-nav {
     display: none;
@@ -691,50 +798,12 @@ form > input::placeholder {
     padding: 0 15px;
     box-sizing: border-box;
   }
-}
-
-
-
-/* styles for transactions page */
-
-.sub-text { 
-  color:var(--primary-container);
-}
-
-.content {
-  padding-left:2px;
-  padding-right:2px;
-}
-
-.heading--text  {
-  color:var(--primary-container);
-  font-size:2rem;
-}
-
-.transaction--header_text { 
-  display: flex;
-  flex-direction: column;
-  gap:5
-}
-
-.transaction--header { 
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items: center;
-
-  width:95%;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.export--btn { 
-  border:none;
-  padding:15px 20px;
-  background-color: var(--on-primary-fixed-variant);
-  color:white;
-  border-radius:35px;
-  display: flex;
-  justify-content: center;
-  align-items:center
+  .transaction--filter   {
+    display: flex;
+    flex-direction: column;
+    padding-left:5px;
+    padding-top:5px;
+    align-items: flex-start;
+  }
+    
 }

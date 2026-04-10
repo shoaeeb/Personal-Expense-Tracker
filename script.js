@@ -2,11 +2,60 @@ const form = document.getElementById("ledger_form");
 const table=document.querySelector(".table__main");
 const filterOptions = document.querySelectorAll(".filter__option");
 const navbarElements = document.querySelectorAll("#navbar--link");
+const from  =document.querySelector("#date-from");
+const to = document.querySelector("#date-to");
+const categoryFilter = document.querySelector("#category-filter");
 
-let filterOptionValue = null
 
 
+let filterOptionValue = null;
 
+const ITEMS_PER_PAGE  = 10;
+let currentPage = 1;
+
+
+function renderPagination(totalItems) {
+  const totalPages = Math.ceil(totalItems/ITEMS_PER_PAGE);
+  const start = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+  const end = Math.min(currentPage * ITEMS_PER_PAGE, totalItems);
+
+  document.querySelector(".pagination__info").innerHTML = 
+  `Showing <strong>${start} - ${end}</strong> of <strong>${totalItems}</strong> transactions`;
+
+  const controls = document.querySelector(".pagination__controls");
+   controls.innerHTML = `
+    <button class="pagination__btn" id="prev-btn" ${currentPage === 1 ? "disabled" : ""}>&lt;</button>
+    ${getPaginationButtons(totalPages)}
+    <button class="pagination__btn" id="next-btn" ${currentPage === totalPages ? "disabled" : ""}>></button>
+  `;
+  controls.querySelectorAll(".pagination__btn[data-page]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentPage = parseInt(btn.dataset.page);
+      renderTable();
+    });
+  });
+    document.getElementById("prev-btn")?.addEventListener("click", () => {
+    if (currentPage > 1) { currentPage--; renderTable(); }
+  });
+  document.getElementById("next-btn")?.addEventListener("click", () => {
+    if (currentPage < totalPages) { currentPage++; renderTable(); }
+  });
+}
+
+
+function getPaginationButtons(totalPages) {
+  const pages = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+      pages.push(`<button class="pagination__btn ${i === currentPage ? 'pagination__btn--active' : ''}" data-page="${i}">${i}</button>`);
+    } else if (pages[pages.length - 1] !== '<span class="pagination__ellipsis">...</span>') {
+      pages.push('<span class="pagination__ellipsis">...</span>');
+    }
+  }
+
+  return pages.join('');
+}
 
 function addSidebarClassList() {
   navbarElements.forEach(ele=> { 
@@ -26,6 +75,7 @@ addSidebarClassList()
 
 
 
+
 filterOptions.forEach(filterOption=> {
     filterOption.addEventListener("click",(e)=> {
     filterOptions.forEach(b=>b.classList.remove("selected__tab"));
@@ -35,6 +85,29 @@ filterOptions.forEach(filterOption=> {
     })
     
 })
+
+function exportLedger() { 
+  const headers =["Date","Merchant","Category","Type","Amount"];
+  const escape  =val => `${val}`;
+  const rows = data.map(item => [
+    escape(formatDate(item.createdAt)),
+    escape(item.merchant),
+    escape(item.category),
+    escape(item.type),
+    item.amount
+  ])
+  const csv = [headers,...rows].map(row => row.join(",")).join("\n");
+  const blob = new Blob([csv],{type:"text/csv"});
+  const url =  URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href=url;
+  a.download="ledger.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+document.getElementById("export-btn")?.addEventListener("click", exportLedger);
+
 
 
 let data = JSON.parse(localStorage.getItem("ledger_data")) || [];
@@ -89,7 +162,30 @@ function renderTable() {
    console.log(filteredData);
   }
 
-  const tableData = filteredData.sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
+if (from?.value || to?.value) {
+  filteredData = filteredData.filter(item => {
+    const itemDate = new Date(item.createdAt).toISOString().split("T")[0];
+    const fromVal = from?.value;
+    const toVal = to?.value;
+    if (fromVal && toVal) return itemDate >= fromVal && itemDate <= toVal;
+    if (fromVal) return itemDate >= fromVal;
+    if (toVal) return itemDate <= toVal;
+  });
+}
+if(categoryFilter?.value) { 
+  filteredData = filteredData.filter(item=>item.category===categoryFilter.value)
+}
+
+let tableData = [];
+const totalItems = filteredData.length;
+
+if (window.location.pathname.includes("transactions.html")) {
+  tableData = filteredData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+  renderPagination(totalItems);
+} else {
+  tableData = filteredData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5);
+}
 
   const content = `
     <thead>
@@ -146,6 +242,18 @@ function renderTable() {
     updateSummary()
     renderTable(); //update the table whenever data gets updated
 });
+
+
+[to,from,categoryFilter].forEach(ele=>  {
+  ele?.addEventListener("change",()=>  {
+    currentPage = 1;
+    renderTable();
+  })
+})
+
+
+
+
 
 renderTable();// render table for the first time
 updateSummary()

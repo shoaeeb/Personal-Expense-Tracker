@@ -91,9 +91,91 @@
                       <p class="sub-text">LEDGER ARCHIVES</p>
                     <h1 class="heading--text">Transactions Ledger</h1>
                   </div>
-                    <button class="export--btn"><span class="material-symbols-outlined text-xl">ios_share</span>
+                    <button id="export-btn" class="export--btn"><span class="material-symbols-outlined text-xl">ios_share</span>
                     Export Ledger
                     </div>
+                  <div class="transaction--filter">
+                    <!-- here i want a datepciker -->
+                     <div class="date-from">
+                      <label for="date-from">Date From:</label>
+                    <input
+                    name="date-from"
+                     type="date" id="date-from" />
+                    </div>
+                    <div class="date-to">
+                      <label for="date-to">Date To</label>
+                      <input type="date" id="date-to" />
+                    </div>
+                     <select id="category-filter">
+                      <option value="">All Categories</option>
+                      <option value="transport">Transport</option>
+                        <option value="salary">Salary</option>
+                        <option value="investment">Investment</option>
+                        <option value="technology">Technology</option>
+                        <option value="Rent and Utilities">Rent and Utilities</option>
+                      </select>
+                    
+                     </select>
+                  </div>
+                 <div class="ledger__table">
+                  
+                  <table class="table__main">
+                    <thead>
+                      <tr>
+                        <th>DATE</th>
+                        <th>TRANSACTION</th>
+                        <th>CATEGORY</th>
+                        <th>AMOUNT</th>
+                      </tr>
+                    </thead>
+                    <!-- <tbody>
+                      <tr>
+                        <td>Oct 24,2023</td>
+                        <td class="source">Whole Food Market</td>
+                        <td class="category"><span>Food & Dinning</span></td>
+                        <td class="expense">-$142</td>
+                      </tr>
+                      <tr>
+                        <td>Oct 22,2023</td>
+                        <td class="source">Architectural Monthly</td>
+                        <td class="category"><span>Salary</span></td>
+                        <td class="income">+$8500</td>
+                      </tr>
+                      <tr>
+                        <td>Oct 20,2023</td>
+                        <td class="source">Metropolitan Rent</td>
+                        <td class="category"><span>Rent & Utilities</span></td>
+                        <td class="expense">-$3200</td>
+                      </tr>
+                      <tr>
+                        <td>Oct 18,2023</td>
+                        <td class="source">NVIDIA corp</td>
+                        <td class="category"><span>Investment</span></td>
+                        <td class="income">+$425</td>
+                      </tr>
+                      <tr>
+                        <td>Oct 15,2023</td>
+                        <td class="source">Apple One Premier</td>
+                        <td class="category"><span>Technology</span></td>
+                        <td class="expense">-$32</td>
+                      </tr>
+                    </tbody> -->
+                  
+                  </table>
+                  <div class="pagination">
+                    <p class="pagination__info">Showing<strong>1 - 10 </strong> of <strong>1,248 </strong> transactions</p>
+                    <div class="pagination__controls">
+                      <button class="pagination__btn" id="prev-btn">&lt;</button>
+                      <button class="pagination__btn pagination__btn--active">1</button>
+                      <button class="pagination__btn">2</button>
+                      <button class="pagination__btn">3</button>
+                      <span class="pagination__ellipsis">...</span>
+                      <button class="pagination__btn">125</button>
+                      <button class="pagination__btn" id="next-btn">&gt;</button>
+                    </div>
+                  </div>
+               </div>
+              
             </div>
              </div>
            
@@ -110,7 +192,7 @@
             <p>Dashboard</p>
           </div>
           <div>
-            <a href="/transactions">
+            <a href="/transactions.html">
               <span class="material-symbols-outlined" data-icon="receipt_long"
                 >receipt_long</span
               >
@@ -118,7 +200,7 @@
             <p>Ledger</p>
           </div>
           <div>
-            <a href="/budget">
+            <a href="/budget.html">
               <span
                 class="material-symbols-outlined"
                 data-icon="account_balance_wallet"
@@ -128,7 +210,7 @@
             <p>Budget</p>
           </div>
           <div>
-            <a href="/reports">
+            <a href="/reports.html">
               <span class="material-symbols-outlined" data-icon="bar_chart"
                 >bar_chart</span
               >
