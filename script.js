@@ -5,7 +5,6 @@ let filterOptionValue = null
 
 
 
-
 filterOptions.forEach(filterOption=> {
     filterOption.addEventListener("click",(e)=> {
     filterOptions.forEach(b=>b.classList.remove("selected__tab"));
@@ -30,32 +29,17 @@ function formatDate(date) {
         year: "numeric"
     }).format(date);
 }
-function getLastFiveLatestData () {
-    const dataSorted = data.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
-    return dataSorted.slice(0,5);
-}
 
 
 function renderTable() {
-  let tableData = getLastFiveLatestData();
-  console.log(filterOptionValue)
-  if(filterOptionValue==="rent") { 
-    tableData = tableData.filter((item)=>item.category === "Rent and Utilities")
-  }
-  if(filterOptionValue === "food") {
-       tableData = tableData.filter((item)=>item.category === "food");
+  let filteredData = [...data];
+
+  if(filterOptionValue && filterOptionValue!=="all") {
+    filteredData = filteredData.filter(item=>item.category.toLowerCase().includes(filterOptionValue.toLowerCase()))
+   console.log(filteredData);
   }
 
-   if(filterOptionValue === "salary") {
-    tableData = tableData.filter((item)=>item.category === "salary");
-  }
-  if(filterOptionValue === "investment") { 
-        tableData = tableData.filter((item)=>item.category === "investment");
-
-  }
-   if(filterOptionValue === "technology") { 
-        tableData = tableData.filter((item)=>item.category === "technology");
-  }
+  const tableData = filteredData.sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
 
   const content = `
     <thead>
