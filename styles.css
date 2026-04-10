@@ -274,7 +274,7 @@ table {
 .main-content {
   background-color: var(--surface-bright);
   width: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
 }
@@ -309,7 +309,7 @@ table {
 .topbar__search-btn {
   position: absolute;
   border: none;
-  background-color: var(--surface-container-lowest);
+  background-color:transparent;
   top: 0.6em;
   left: 1em;
   font-size: 0.5em;
@@ -472,12 +472,13 @@ form > input::placeholder {
 }
 
 .ledger-panel {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 50px);
+  margin-left: 25px;
+  margin-right: 25px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 16px;
+  margin-bottom: 40px;
 }
 
 .ledger-panel > div {
@@ -488,6 +489,7 @@ form > input::placeholder {
   padding: 15px 20px;
   border-radius: 10px;
   overflow-x: auto;
+  flex: 2;
 }
 
 .btn .ledger__form header {
@@ -548,11 +550,19 @@ form > input::placeholder {
   gap: 5px;
 }
 
+
 .ledger__form,
 .ledger__table {
   background-color: var(--primary-fixed);
   border-radius: 15px;
-  padding: 10px 15px;
+  padding: 16px 20px;
+  overflow-y: auto;
+}
+
+.ledger__form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .filter {
@@ -563,10 +573,11 @@ form > input::placeholder {
 
 .ledgertable__header {
   display: flex;
-  gap: 5px;
+  gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .table__main {
@@ -603,6 +614,18 @@ form > input::placeholder {
 .table__main tbody tr td {
   background-color: white;
   padding: 10px 15px;
+}
+
+.table__main tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--surface-container);
+}
+
+.table__main thead th {
+  padding: 8px 15px;
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--on-surface-variant);
+  letter-spacing: 0.05em;
 }
 
 .source {

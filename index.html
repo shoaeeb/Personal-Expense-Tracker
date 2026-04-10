@@ -22,37 +22,37 @@
             <p>Sovereign Architect</p>
 
             <nav class="sidebar__nav">
-              <div class="sidebar__nav-item--active">
+              <div id="navbar--link" class="sidebar__nav-item--active">
                 <span
                   class="material-symbols-outlined nav-icon"
                   data-icon="dashboard"
                   >dashboard</span
                 >
-                <a class="sidebar__nav-link--active" href="/">Dashboard</a>
+                <a class="" href="/">Dashboard</a>
               </div>
-              <div>
+              <div id="navbar--link">
                 <span
                   class="material-symbols-outlined nav-icon"
                   data-icon="receipt_long"
                   >receipt_long</span
                 >
-                <a href="/transactions">Transactions</a>
+                <a href="/transactions.html">Transactions</a>
               </div>
-              <div>
+              <div id="navbar--link">
                 <span
                   class="material-symbols-outlined nav-icon"
                   data-icon="account_balance_wallet"
                   >account_balance_wallet</span
                 >
-                <a href="/budget">Budget</a>
+                <a href="/budget.html">Budget</a>
               </div>
-              <div>
+              <div id="navbar--link">
                 <span
                   class="material-symbols-outlined nav-icon"
                   data-icon="bar_chart"
                   >bar_chart</span
                 >
-                <a href="/reports">Reports</a>
+                <a href="/reports.html">Reports</a>
               </div>
             </nav>
             <button class="sidebar__add-btn">
@@ -89,7 +89,7 @@
                 <div class="card__header">
                   <h1>Total Networth</h1>
                   <!-- fake value for now -->
-                  <h2>$142,850.48</h2>
+                  <h2 id="networth_display">$142,850.48</h2>
                 </div>
                 <div class="card__footer">
                   <div>
@@ -113,7 +113,7 @@
                       >arrow_downward</span
                     >
                   </div>
-                  <h1 class="income__text">$12,500</h1>
+                  <h1 id="income_display"  class="income__text">$12,500</h1>
                   </div>
                   <div class="card card__expense">
                     <div>
@@ -124,7 +124,7 @@
                       >arrow_downward</span
                     >
                   </div>
-                  <h1 class="expense__text">$4,500</h1>
+                  <h1 id="expense_display" class="expense__text">$4,500</h1>
                     
                   </>
                   </div>
@@ -148,7 +148,7 @@
                     <div class="form__row">
                       <div class="form__group">
                         <label for="amount">AMOUNT</label>
-                        <input type="text" id="amount" name="amount" placeholder="0.00"/>
+                        <input type="number" min="1" id="amount" name="amount" placeholder="0.00"/>
                       </div>
                       <div class="form__group">
                         <label for="type">TYPE</label>
